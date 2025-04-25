@@ -1,0 +1,61 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ui-color-palettes"
+dynamic = ["version"]
+description = ''
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "Ye Joo Park", email = "subwaymatch@gmail.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = []
+
+[project.urls]
+Documentation = "https://github.com/Ye Joo Park/ui-color-palettes#readme"
+Issues = "https://github.com/Ye Joo Park/ui-color-palettes/issues"
+Source = "https://github.com/Ye Joo Park/ui-color-palettes"
+
+[tool.hatch.version]
+path = "src/ui_color_palettes/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/ui_color_palettes tests}"
+
+[tool.coverage.run]
+source_pkgs = ["ui_color_palettes", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/ui_color_palettes/__about__.py",
+]
+
+[tool.coverage.paths]
+ui_color_palettes = ["src/ui_color_palettes", "*/ui-color-palettes/src/ui_color_palettes"]
+tests = ["tests", "*/ui-color-palettes/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
